@@ -1,5 +1,5 @@
-export const GATEWAY_HTTP =
-  import.meta.env.VITE_GATEWAY_HTTP || "http://localhost:9980";
+const isHttps = location.protocol === "https:";
 
-export const GATEWAY_WS =
-  import.meta.env.VITE_GATEWAY_WS || "ws://localhost:9980/events";
+export const GATEWAY_HTTP = ""; // same origin
+
+export const GATEWAY_WS = `${isHttps ? "wss" : "ws"}://${location.host}/events`;

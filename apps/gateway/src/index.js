@@ -5,19 +5,8 @@ import { WebSocketServer } from "ws";
 import mqtt from "mqtt";
 import fs from "fs";
 
-/**
- * =========================
- * Config: printers.json
- * =========================
- * Create: apps/gateway/config/printers.json  (and gitignore it)
- * Example:
- * [
- *   { "id":"x1c", "name":"Bambu X1C", "serial":"XXXX", "accessCode":"YYYY", "ip":"192.168.1.123" }
- * ]
- */
-
 const PORT = Number(process.env.PORT || 9980);
-const HOST = process.env.HOST || "127.0.0.1";
+const HOST = process.env.HOST || "0.0.0.0";
 
 // -------------------------
 // Load printer config
