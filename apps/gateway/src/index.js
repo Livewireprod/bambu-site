@@ -17,13 +17,7 @@ const __dirname = path.dirname(__filename);
 // Path to UI build
 const UI_DIST = path.resolve(__dirname, "../../ui/dist");
 
-// Serve static files
-app.use(express.static(UI_DIST));
 
-// SPA fallback
-app.get("*", (_req, res) => {
-  res.sendFile(path.join(UI_DIST, "index.html"));
-});
 
 
 
@@ -82,6 +76,13 @@ app.get("/printers", (req, res) => {
   res.json({ ok: true, printers: safe });
 });
 
+// Serve static files
+app.use(express.static(UI_DIST));
+
+// SPA fallback
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(UI_DIST, "index.html"));
+});
 
 // -------------------------
 // HTTP Server + WebSocket
