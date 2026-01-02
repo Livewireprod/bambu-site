@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:ui": "npm run dev --workspace apps/ui",
+    "dev:gateway": "npm run dev --workspace apps/gateway"
+  }
+}

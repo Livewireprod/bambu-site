@@ -1,0 +1,19 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+
+# Gateway sensitive config
+apps/gateway/config/printers.json
+
+# Build output
+dist/
+build/
+
+# OS junk
+.DS_Store
+Thumbs.db
