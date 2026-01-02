@@ -1,4 +1,3 @@
-// apps/gateway/src/index.js
 import express from "express";
 import http from "http";
 import { WebSocketServer } from "ws";
@@ -16,11 +15,6 @@ const __dirname = path.dirname(__filename);
 
 // Path to UI build
 const UI_DIST = path.resolve(__dirname, "../../ui/dist");
-
-
-
-
-
 
 // -------------------------
 // Load printer config
@@ -80,7 +74,7 @@ app.get("/printers", (req, res) => {
 app.use(express.static(UI_DIST));
 
 // SPA fallback
-app.get("*", (_req, res) => {
+app.get(/.*/, (_req, res) => {
   res.sendFile(path.join(UI_DIST, "index.html"));
 });
 
