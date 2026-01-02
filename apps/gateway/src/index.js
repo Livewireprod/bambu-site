@@ -4,9 +4,29 @@ import http from "http";
 import { WebSocketServer } from "ws";
 import mqtt from "mqtt";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
 
 const PORT = Number(process.env.PORT || 9980);
 const HOST = process.env.HOST || "0.0.0.0";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Path to UI build
+const UI_DIST = path.resolve(__dirname, "../../ui/dist");
+
+// Serve static files
+app.use(express.static(UI_DIST));
+
+// SPA fallback
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(UI_DIST, "index.html"));
+});
+
+
+
 
 // -------------------------
 // Load printer config
