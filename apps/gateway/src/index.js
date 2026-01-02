@@ -63,7 +63,7 @@ const printersById = new Map(printers.map((p) => [p.id, p]));
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Bambu Gateway running ✅"));
+// app.get("/", (req, res) => res.send("Bambu Gateway running ✅"));
 app.get("/health", (req, res) => res.json({ ok: true }));
 app.get("/printers", (req, res) => {
   const safe = printers.map(({ raw, ...p }) => p);
